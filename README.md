@@ -28,7 +28,7 @@ Check out the live demo [here](https://currency-converter-ssg.vercel.app/)
    npm install
 
 3. **Set up the ExchangeRate API**:
-   To obtain an API key, sign up on [ExchangeRate API](https://www.exchangerate-api.com/).
+   - To obtain an API key, sign up on [ExchangeRate API](https://www.exchangerate-api.com/).
    - Create a .env file in the project root and add your API key:
      ```bash
      REACT_APP_EXCHANGE_RATE_API_KEY=your_api_key_here
