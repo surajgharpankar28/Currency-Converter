@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import { useState } from "react";
 import { currencyConverter } from "./api/postAPI";
 
 function App() {
@@ -27,6 +26,19 @@ function App() {
     }
   };
 
+  // Function to format currency
+  const formatCurrency = (value, currencyCode) => {
+    if (value !== null && value !== "") {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: currencyCode, // Use the specified currency code for formatting
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(value);
+    }
+    return "";
+  };
+
   return (
     <section className="currency-converter">
       <div className="currency-div">
@@ -44,6 +56,8 @@ function App() {
               setConvertedAmount(null); // Reset convertedAmount when typing starts
             }}
           />
+
+          {/* Display formatted input amount */}
         </div>
         <div className="currency-selector">
           <div>
@@ -85,11 +99,11 @@ function App() {
         </button>
 
         <hr />
-        {convertedAmount !== null && ( // Check for null to determine if to show result
+        {convertedAmount !== null && (
           <div>
             <h2>
-              {amount} {fromCurrency} = {convertedAmount.toFixed(2)}{" "}
-              {toCurrency}
+              {formatCurrency(amount, fromCurrency)} ={" "}
+              {formatCurrency(convertedAmount, toCurrency)} {toCurrency}
             </h2>
           </div>
         )}
