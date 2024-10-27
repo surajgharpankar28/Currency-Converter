@@ -32,8 +32,8 @@ function App() {
       <div className="currency-div">
         <h1>Currency Converter</h1>
         <hr />
-        <div>
-          <label htmlFor="currency_amount">Amount</label>
+        <div className="input-div">
+          <label htmlFor="currency_amount">Amount:</label>
           <input
             type="number"
             id="currency_amount"
