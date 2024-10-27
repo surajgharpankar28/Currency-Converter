@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { currencyConverter } from "./api/postAPI";
+import logo from "/src/logo.png";
 
 const App = () => {
   const [amount, setAmount] = useState("");
@@ -32,7 +33,7 @@ const App = () => {
       <section className="currency-converter">
         <div className="currency-div">
           <div className="header">
-            <img src="/public/logo.png" alt="Currency Converter Logo" />
+            <img src={logo} alt="Currency Converter Logo" />
             <h1>Currency Converter</h1>
           </div>
 
