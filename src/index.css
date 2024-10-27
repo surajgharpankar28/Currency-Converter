@@ -30,10 +30,18 @@ body {
   text-align: center;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 h1 {
   color: #667eea;
   font-size: 2.4rem;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 .input-div {
@@ -41,6 +49,7 @@ h1 {
   align-items: center;
   justify-content: center;
 }
+
 .currency-div {
   display: flex;
   flex-direction: column;
@@ -52,6 +61,10 @@ h1 {
   justify-content: space-between;
 }
 
+img {
+  width: 3rem;
+}
+
 label {
   font-size: 1.4rem;
   color: #333333;
@@ -60,7 +73,12 @@ label {
 
 select {
   margin-left: 1rem;
+  padding: 0.8rem;
+  font-size: 1.4rem;
+  border: 1px solid #cccccc;
+  border-radius: 0.4rem;
 }
+
 input[type="number"] {
   padding: 0.8rem;
   font-size: 1.6rem;
@@ -68,13 +86,6 @@ input[type="number"] {
   border-radius: 0.4rem;
   width: 100%;
   text-align: center;
-}
-
-select {
-  padding: 0.8rem;
-  font-size: 1.4rem;
-  border: 1px solid #cccccc;
-  border-radius: 0.4rem;
 }
 
 button {
@@ -98,4 +109,21 @@ button:disabled {
   background-color: #cccccc;
   color: #666666;
   cursor: not-allowed;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #cccccc;
+  margin: 1rem 0;
+}
+
+.result {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 1.4rem;
 }
