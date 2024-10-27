@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { currencyConverter } from "./api/postAPI";
@@ -6,7 +5,7 @@ import { currencyConverter } from "./api/postAPI";
 function App() {
   const currency = ["USD", "EUR", "INR", "GBP", "AUD"];
 
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState("");
   const [fromCurrency, setFromCurrency] = useState("INR");
   const [toCurrency, setToCurrency] = useState("USD");
   const [convertedAmount, setConvertedAmount] = useState(null);
@@ -22,6 +21,7 @@ function App() {
       setIsLoading(false);
       setConvertedAmount(data.conversion_result);
     } catch (error) {
+      setIsLoading(false); // Ensure loading is reset on error
       setError("Error fetching conversion rates");
       console.error(error);
     }
@@ -38,7 +38,11 @@ function App() {
             type="number"
             id="currency_amount"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              setAmount(value);
+              setConvertedAmount(null); // Reset convertedAmount when typing starts
+            }}
           />
         </div>
         <div className="currency-selector">
@@ -59,10 +63,10 @@ function App() {
           </div>
           <div>
             <label>
-              To :
+              To:
               <select
                 value={toCurrency}
-                onChange={(e) => setToCurrency(e.target.value)} // Use onChange instead of setToCurrency
+                onChange={(e) => setToCurrency(e.target.value)}
               >
                 {currency.map((currency) => (
                   <option key={currency} value={currency}>
@@ -81,7 +85,7 @@ function App() {
         </button>
 
         <hr />
-        {convertedAmount && (
+        {convertedAmount !== null && ( // Check for null to determine if to show result
           <div>
             <h2>
               {amount} {fromCurrency} = {convertedAmount.toFixed(2)}{" "}
