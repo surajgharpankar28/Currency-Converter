@@ -21,7 +21,6 @@ function App() {
       const data = await res.data;
       setIsLoading(false);
       setConvertedAmount(data.conversion_result);
-      console.log(data);
     } catch (error) {
       setError("Error fetching conversion rates");
       console.error(error);
