@@ -31,8 +31,29 @@ Check out the live demo [here](https://currency-converter-ssg.vercel.app/)
    - To obtain an API key, sign up on [ExchangeRate API](https://www.exchangerate-api.com/).
    - Create a .env file in the project root and add your API key:
      ```bash
-     REACT_APP_EXCHANGE_RATE_API_KEY=your_api_key_here
-
-4. **Run the application**
+     VITE_API_KEY=your_api_key_here
+4. **Add the following to your 'vite.config.js' file.**
+  ```bash
+   import { defineConfig } from "vite";
+   import react from "@vitejs/plugin-react";
+   
+   // https://vite.dev/config/
+   export default defineConfig({
+     plugins: [
+       react(),
+       {
+         name: "replace-process-env",
+         // Use the "transform" hook to replace process.env variables
+         transform(code) {
+           return code.replace(
+             /process\.env\.VITE_API_KEY/g,
+             JSON.stringify(process.env.VITE_API_KEY)
+           );
+         },
+       },
+     ],
+   });
+```
+5. **Run the application**
     ```bash
    npm start
